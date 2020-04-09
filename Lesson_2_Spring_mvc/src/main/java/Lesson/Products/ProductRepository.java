@@ -12,32 +12,42 @@ public class ProductRepository {
 
     private final AtomicInteger identity = new AtomicInteger(0);
 
-    private final List<Product> products = new ArrayList<>();
+    private final List<Product> products_array = new ArrayList<>();
     private List<Product> productsId = new ArrayList<>();
 
     public ProductRepository() {
         insert(new Product("Б.Ю.Александров", 59.6f));
         insert(new Product("Батон", 46.5f));
         insert(new Product("Dragon", 348.37f));
+//        productsId.add(new Product("8", 7f));
     }
 
     public void insert(Product product){
         product.setId(identity.incrementAndGet());
         product.setCost((double) Math.round(product.getCost() * 100) / 100);
-        products.add(product);
+        products_array.add(product);
+    }
+
+    public void insertFindId(Product product){
+        productsId.add(product);
     }
 
     public List<Product> getAllProducts(){
-        return Collections.unmodifiableList(products);
+        return Collections.unmodifiableList(products_array);
     }
 
-    public List<Product> getProductsById(int id){
+    public List<Product> findProductsById(){
 
-        for (Product a: products) {
-            if(a.getId() == id){
+        for (Product a: products_array) {
+            if(a.getId() == productsId.get(0).getId()){
                 productsId.add(a);
             }
         }
+        productsId.remove(0);
         return Collections.unmodifiableList(productsId);
     }
+    public List<Product> getProductsById(){
+        return Collections.unmodifiableList(productsId);
+    }
+
 }

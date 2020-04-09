@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProductController {
 
     private final ProductRepository productRepository;
+    private int id;
 
     @Autowired
     public ProductController(ProductRepository productRepository){
@@ -20,21 +21,38 @@ public class ProductController {
 
     @GetMapping
     public String allProducts(Model model){
-        model.addAttribute("products", productRepository.getAllProducts());
+        model.addAttribute("products_array", productRepository.getAllProducts());
+        model.addAttribute("productsId", productRepository.getProductsById());
         return "products";
     }
 
-    @GetMapping("/product")
+    @GetMapping("/form2")
     public String formProduct(Model model){
         model.addAttribute("product", new Product());
-        return "products";
+        return "prod_form";
     }
 
-    @PostMapping("/product")
+    @PostMapping("/form2")
     public String newProduct(Product product){
         productRepository.insert(product);
-        return "product";
+        return "redirect:/product";
     }
+
+    @GetMapping("/form3")
+    public String productId(Model model){
+        model.addAttribute("product", new Product());
+        return "prod_find";
+    }
+
+    @PostMapping("/form3")
+    public String findProduct(Product product){
+
+        productRepository.insertFindId(product);
+        productRepository.findProductsById();
+        return "redirect:/product";
+    }
+
+
 
 
 }

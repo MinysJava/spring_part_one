@@ -2,11 +2,11 @@ package Lesson.Products;
 
 public class Product {
 
-    private Integer id;
+    private int id;
 
     private String title;
 
-    private Double cost;
+    private double cost;
 
     public Product() {
     }
@@ -14,6 +14,10 @@ public class Product {
     public Product(String title, double cost) {
         this.title = title;
         this.cost = cost;
+    }
+
+    public Product(int id) {
+        this.id = id;
     }
 
     public int getId() {

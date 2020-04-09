@@ -8,42 +8,35 @@
 <body>
 <h1>Products</h1>
 
-<div style="display: flex">
-    <div>
-        <form th:action="@{/product}" th:object="${product}" method="post">
-            <p>Title:</p>
-           <input type="text" th:field="*{title}">
-            <p>Cost:</p>
-            <input type="number" th:field="*{cost}">
-            <button type="submit">Insert</button>
-        </form>
-
-    </div>
-<!--<a th:href="@{/productMain}">new person</a>-->
+<a th:href="@{/product/form2}">new product</a>
+<a th:href="@{/product/form3}">find product</a>
     <div style="display: flex; width: 30%; justify-content: space-around;" >
         <div>
-            <p th:each="product : ${products}" th:text="${product.id}"></p>
+            <p th:each="product : ${products_array}" th:text="${product.id}"></p>
         </div>
         <div>
-            <p th:each="product : ${products}" th:text="${product.title}"></p>
+            <p th:each="product : ${products_array}" th:text="${product.title}"></p>
         </div>
         <div>
-            <p th:each="product : ${products}" th:text="${product.cost}"></p>
+            <p th:each="product : ${products_array}" th:text="${product.cost}"></p>
         </div>
     </div>
+
+<div>
+    <p>Продукт по id</p>
+    <div style="display: flex; width: 30%; justify-content: space-around;" >
+        <div>
+            <p th:each="product : ${productsId}" th:text="${product.id}"></p>
+        </div>
+        <div>
+            <p th:each="product : ${productsId}" th:text="${product.title}"></p>
+        </div>
+        <div>
+            <p th:each="product : ${productsId}" th:text="${product.cost}"></p>
+        </div>
+    </div>
+
 </div>
 
-<!--<table>-->
-    <!--<tr>-->
-        <!--<th>ID</th>-->
-        <!--<th>Title</th>-->
-        <!--<th>Cost</th>-->
-    <!--</tr>-->
-    <!--<tr th:each="product : ${products}">-->
-        <!--<td th:text="${product.id}">FN</td>-->
-        <!--<td th:text="${product.title}">FN</td>-->
-        <!--<td th:text="${product.cost}">LN</td>-->
-    <!--</tr>-->
-<!--</table>-->
 </body>
 </html>

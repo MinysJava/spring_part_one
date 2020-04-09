@@ -6,13 +6,15 @@
 </head>
 <body>
 
-<!--<form th:action="@{/product/form2}" th:object="${product}" method="post">-->
-    <!--<p>Title:</p>-->
-    <!--<input type="text" th:field="*{title}">-->
-    <!--<p>Cost:</p>-->
-    <!--<input type="text" th:field="*{cost}">-->
-    <!--<button type="submit">Insert</button>-->
-<!--</form>-->
+<form th:action="@{/product/form2}" th:object="${product}" method="post">
+    <p>Title:</p>
+    <input type="text" th:field="*{title}">
+    <p>Cost:</p>
+    <input type="number" step="any" th:field="*{cost}">
+    <button type="submit">Insert</button>
+</form>
+
+
 
 </body>
 </html>
