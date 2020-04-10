@@ -1,4 +1,4 @@
-package Lesson.persist;
+package Lesson.Persist;
 
 public class Person {
 

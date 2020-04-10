@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Lesson_2_Servlet" />
         <module name="Lesson_2_Spring_mvc" />
+        <module name="Lesson_3_hibernate" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

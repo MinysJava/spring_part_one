@@ -1,4 +1,4 @@
-package Lesson.persist;
+package Lesson.Persist;
 
 import org.springframework.stereotype.Repository;
 
