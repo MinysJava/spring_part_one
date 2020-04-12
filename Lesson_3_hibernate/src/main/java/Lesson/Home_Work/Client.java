@@ -1,25 +1,35 @@
 package Lesson.Home_Work;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
+@Entity
+@Table(name = "client")
 public class Client {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
     public Client() {
     }
 
-    public Client(String name) {
+    public Client(String name, List<Product> products) {
         this.name = name;
+        this.products = products;
     }
+
+    @ManyToMany
+    @JoinTable(
+            name = "basket",
+            joinColumns = @JoinColumn(name = "client_id"),
+            inverseJoinColumns = @JoinColumn(name = "priduct_id")
+    )
+    private List<Product> products;
 
     public Long getId() {
         return id;
@@ -35,5 +45,13 @@ public class Client {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }
