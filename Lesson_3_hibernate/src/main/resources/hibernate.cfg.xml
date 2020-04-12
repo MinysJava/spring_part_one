@@ -20,5 +20,7 @@
 
         <mapping class="Lesson.Persist.Person"/>
         <mapping class="Lesson.Persist.Contact"/>
+        <mapping class="Lesson.Home_Work.Client"/>
+        <mapping class="Lesson.Home_Work.Product"/>
     </session-factory>
 </hibernate-configuration>
