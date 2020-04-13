@@ -10,18 +10,18 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
-    @Column(name = "titl")
+    @Column(name = "title")
     private String title;
 
     @Column(name = "cost")
-    private String cost;
+    private int cost;
 
     public Product() {
     }
 
-    public Product(String title, String cost, List<Client> clients) {
+    public Product(String title, int cost, List<Client> clients) {
         this.title = title;
         this.cost = cost;
         this.clients = clients;
@@ -35,11 +35,11 @@ public class Product {
     )
     private List<Client> clients;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -51,11 +51,11 @@ public class Product {
         this.title = title;
     }
 
-    public String getCost() {
+    public int getCost() {
         return cost;
     }
 
-    public void setCost(String cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 
@@ -65,5 +65,15 @@ public class Product {
 
     public void setClients(List<Client> clients) {
         this.clients = clients;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", cost=" + cost +
+                ", clients=" + clients +
+                '}';
     }
 }
