@@ -7,8 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Lesson_2_Servlet" />
-        <module name="Lesson_2_Spring_mvc" />
         <module name="Lesson_3_hibernate" />
+        <module name="Lesson_4_Spring_mvc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
