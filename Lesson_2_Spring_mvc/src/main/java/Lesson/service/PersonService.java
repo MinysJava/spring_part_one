@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonService {
@@ -20,21 +21,21 @@ public class PersonService {
 
     @Transactional
     public void insert(Person person){
-        personRepository.insert(person);
+        personRepository.save(person);
     }
 
     @Transactional
     public void update(Person person){
-        personRepository.update(person);
+        personRepository.save(person);
     }
 
     @Transactional(readOnly = true)
     public List<Person> getAllPersons(){
-        return personRepository.getAllPersons();
+        return personRepository.findAll();
     }
 
     @Transactional(readOnly = true)
-    public Person findById(Long id){
+    public Optional<Person> findById(Long id){
         return personRepository.findById(id);
     }
 }

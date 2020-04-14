@@ -1,36 +1,13 @@
 package Lesson.Persist;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.List;
+import java.util.Optional;
 
 @Repository
-public class PersonRepository {
+public interface PersonRepository extends JpaRepository<Person, Long> {
 
-    @PersistenceContext
-    private EntityManager em;
+    Optional<Person> findByFirstName (String firstName);
+    Optional<Person> findByFirstNameAndEmail (String firstName, String email);
 
-    @Transactional(propagation = Propagation.REQUIRED)
-    public void insert(Person person){
-        em.persist(person);
-    }
-
-    @Transactional(propagation = Propagation.REQUIRED)
-    public void update(Person person){
-        em.merge(person);
-    }
-
-    @Transactional(propagation = Propagation.REQUIRED)
-    public Person findById(Long id){
-        return em.find(Person.class, id);
-    }
-
-    @Transactional(propagation = Propagation.REQUIRED)
-    public List<Person> getAllPersons(){
-        return em.createQuery("from Person p").getResultList();
-    }
 }

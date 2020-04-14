@@ -9,6 +9,13 @@
 
 
 <a th:href="@{/person/form}">new person</a>
+<form method="get" th:action="@{/person}">
+<p>
+    <label for="minPrice">Min Price</label><input type="number" id="minPrice" name="minPrice">
+    <label for="maxPrice">Max Price</label><input type="number" id="maxPrice" name="maxPrice">
+    <button type="submit">Apply</button>
+</p>
+</form>
 <table>
     <tr>
         <th>First name</th>
