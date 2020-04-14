@@ -1,19 +1,34 @@
 package Lesson.Persist;
 
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+
+@Entity
 public class Person {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private int id;
 
+    @Column
     private String firstName;
+
+    @Column
     private String LastName;
+
+    @Email
+    @Column
+    private String email;
+
 
     public Person() {
     }
 
-    public Person( String firstName, String lastName) {
-
+    public Person(String firstName, String lastName, @Email String email) {
         this.firstName = firstName;
-        this.LastName = lastName;
+        LastName = lastName;
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -38,5 +53,13 @@ public class Person {
 
     public int getId() {
         return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
