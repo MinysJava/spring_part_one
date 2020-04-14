@@ -3,7 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/Lesson_2_Servlet" />
-    <file type="web" url="file://$PROJECT_DIR$/Lesson_2_Spring_mvc" />
+    <file type="web" url="file://$PROJECT_DIR$/Lesson_4_Spring_mvc" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
