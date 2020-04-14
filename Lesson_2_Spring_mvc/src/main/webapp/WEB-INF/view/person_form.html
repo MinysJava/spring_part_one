@@ -11,6 +11,10 @@
     <input type="text" th:value="*{firstName}">
     <p>Last Name:</p>
     <input type="text" th:field="*{lastName}">
+    <p>Email</p>
+    <input type="text" th:field="*{email}">
+    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
+
     <button type="submit">Insert</button>
 </form>
 

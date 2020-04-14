@@ -2,6 +2,7 @@ package Lesson;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -14,12 +15,13 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
+@EnableJpaRepositories("Lesson.Persist")
 public class AppPersistConfig {
 
     @Bean(name = "dataSource")
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/hibernate_lesson_3_HW?createDatabaseIfNotExist=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/hibernate_Lesson_4?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC");
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUsername("root");
         dataSource.setPassword("root");
