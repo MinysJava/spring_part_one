@@ -60,7 +60,7 @@ public class Client {
         return "Client{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", products=" + products +
+                ", product=" + products +
                 '}';
     }
 }
