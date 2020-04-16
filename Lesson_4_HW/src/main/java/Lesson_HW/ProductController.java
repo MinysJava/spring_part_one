@@ -48,13 +48,6 @@ public class ProductController {
         }
     }
 
-//    @GetMapping(params = {"minPrice"})
-//    public String getMinProducts(@RequestParam("minPrice") BigDecimal minPrice,
-//                                 Model model){
-//        model.addAttribute("products_array", productService.getMinProducts(minPrice));
-//        return "products";
-//    }
-
     @GetMapping("/form")
     public String formProduct(Model model){
         model.addAttribute("product", new Product());
