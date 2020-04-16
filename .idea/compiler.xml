@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Lesson_2_Servlet" />
         <module name="Lesson_3_hibernate" />
+        <module name="Lesson_4_HW" />
         <module name="Lesson_4_Spring_mvc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Lesson_1" target="8" />
       <module name="Lesson_2_Spring_MVC" target="1.5" />
+      <module name="Lesson_4_Spring_mvc" target="1.8" />
       <module name="network-chat" target="8" />
     </bytecodeTargetLevel>
   </component>
