@@ -33,9 +33,27 @@ public class ProductController {
     public String getMinMaxProducts(@RequestParam("minPrice") BigDecimal minPrice,
                               @RequestParam("maxPrice") BigDecimal maxPrice,
                               Model model){
-        model.addAttribute("products_array", productService.getMinMaxProducts(minPrice, maxPrice));
+        if(minPrice != null & maxPrice != null){
+            model.addAttribute("products_array", productService.getMinMaxProducts(minPrice, maxPrice));
+            return "products";
+        } else if (minPrice != null){
+            model.addAttribute("products_array", productService.getMinProducts(minPrice));
         return "products";
+        } else if ( maxPrice != null){
+            model.addAttribute("products_array", productService.getMaxProducts(maxPrice));
+            return "products";
+        } else {
+            model.addAttribute("products_array", productService.getAllProducts());
+            return "products";
+        }
     }
+
+//    @GetMapping(params = {"minPrice"})
+//    public String getMinProducts(@RequestParam("minPrice") BigDecimal minPrice,
+//                                 Model model){
+//        model.addAttribute("products_array", productService.getMinProducts(minPrice));
+//        return "products";
+//    }
 
     @GetMapping("/form")
     public String formProduct(Model model){

@@ -5,10 +5,13 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findByCostBetween (BigDecimal minPrice, BigDecimal maxPrice);
+
+    List<Product> findByCostAfter (BigDecimal minPrice);
+
+    List<Product> findByCostBefore (BigDecimal maxPrice);
 }
