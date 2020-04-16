@@ -9,7 +9,14 @@
 <h1>Products</h1>
 
 <a th:href="@{/product/form}">new product</a>
-    <div style="display: flex; width: 30%; justify-content: space-around;" >
+<br>
+<form method="get" th:action="@{/product}">
+    <p>
+        <label for="minPrice">Min Price</label><input type="number" id="minPrice" name="minPrice">
+        <label for="maxPrice">Max Price</label><input type="number" id="maxPrice" name="maxPrice">
+        <button type="submit">Apply</button>
+    </p>
+</form>    <div style="display: flex; width: 30%; justify-content: space-around;" >
         <div>
             <p>ID</p>
             <p th:each="product : ${products_array}" th:text="${product.id}"></p>
