@@ -8,8 +8,7 @@
 <body>
 <h1>Products</h1>
 
-<a th:href="@{/product/form2}">new product</a>
-<a th:href="@{/product/form3}">find product</a>
+<a th:href="@{/product/form}">new product</a>
     <div style="display: flex; width: 30%; justify-content: space-around;" >
         <div>
             <p th:each="product : ${products_array}" th:text="${product.id}"></p>
@@ -22,21 +21,6 @@
         </div>
     </div>
 
-<div>
-    <p>Продукт по id</p>
-    <div style="display: flex; width: 30%; justify-content: space-around;" >
-        <div>
-            <p th:each="product : ${productsId}" th:text="${product.id}"></p>
-        </div>
-        <div>
-            <p th:each="product : ${productsId}" th:text="${product.title}"></p>
-        </div>
-        <div>
-            <p th:each="product : ${productsId}" th:text="${product.cost}"></p>
-        </div>
-    </div>
-
-</div>
 
 </body>
 </html>

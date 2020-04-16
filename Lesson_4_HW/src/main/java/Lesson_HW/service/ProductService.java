@@ -31,7 +31,7 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public List<Product> getAllPersons(){
+    public List<Product> getAllProducts(){
         return productRepository.findAll();
     }
 
