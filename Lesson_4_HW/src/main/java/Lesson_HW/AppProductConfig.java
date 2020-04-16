@@ -15,7 +15,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("Lesson_HW.products")
+@EnableJpaRepositories("Lesson_HW.product")
 public class AppProductConfig {
 
     @Bean(name = "dataSource")
@@ -33,7 +33,7 @@ public class AppProductConfig {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setDataSource(dataSource());
         factory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        factory.setPackagesToScan("Lesson_HW.Product");
+        factory.setPackagesToScan("Lesson_HW.product");
         Properties jpaProperties = new Properties();
         jpaProperties.put("hibernate.hbm2ddl.auto", "update");
         jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");

@@ -1,4 +1,4 @@
-package Lesson_HW.products;
+package Lesson_HW.product;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

@@ -1,6 +1,6 @@
 package Lesson_HW;
 
-import Lesson_HW.products.Product;
+import Lesson_HW.product.Product;
 import Lesson_HW.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class ProductController {
     }
 
     @GetMapping("/form")
-    public String formProducts(Model model){
+    public String formProduct(Model model){
         model.addAttribute("product", new Product());
         return "prod_form";
     }
@@ -35,7 +35,7 @@ public class ProductController {
     @PostMapping("/form")
     public String newProduct(Product product){
         productService.insert(product);
-        return "redirect:/person";
+        return "redirect:/product";
     }
 }
 

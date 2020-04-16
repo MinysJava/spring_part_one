@@ -11,12 +11,15 @@
 <a th:href="@{/product/form}">new product</a>
     <div style="display: flex; width: 30%; justify-content: space-around;" >
         <div>
+            <p>ID</p>
             <p th:each="product : ${products_array}" th:text="${product.id}"></p>
         </div>
         <div>
+            <p>Title</p>
             <p th:each="product : ${products_array}" th:text="${product.title}"></p>
         </div>
         <div>
+            <p>Cost</p>
             <p th:each="product : ${products_array}" th:text="${product.cost}"></p>
         </div>
     </div>

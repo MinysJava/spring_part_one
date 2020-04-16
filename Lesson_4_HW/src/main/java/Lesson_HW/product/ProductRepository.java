@@ -1,4 +1,4 @@
-package Lesson_HW.products;
+package Lesson_HW.product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

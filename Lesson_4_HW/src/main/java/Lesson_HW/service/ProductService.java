@@ -1,7 +1,7 @@
 package Lesson_HW.service;
 
-import Lesson_HW.products.Product;
-import Lesson_HW.products.ProductRepository;
+import Lesson_HW.product.Product;
+import Lesson_HW.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
