@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/resources/style.css}">
 </head>
 <body>
 <h1>Products</h1>
@@ -30,6 +31,16 @@
             <p th:each="product : ${products_array}" th:text="${product.cost}"></p>
         </div>
     </div>
+
+<div class="pagination">
+    <a th:href="@{/product(page = ${1}, size = ${products_array.size})}">&laquo;</a>
+
+    <a th:each="num : ${#numbers.sequence(1, products_array.totalPages)}"
+       th:classappend="${num == products_array.number + 1} ? 'active'"
+       th:href="@{/product(page = ${num}, size = ${products_array.size})}">[[${num}]]</a>
+
+    <a th:href="@{/product(page = ${products_array.totalPages}, size = ${products_array.size})}">&raquo;</a>
+</div>
 
 
 </body>
