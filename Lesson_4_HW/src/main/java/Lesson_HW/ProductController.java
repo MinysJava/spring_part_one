@@ -31,6 +31,7 @@ public class ProductController {
                                     @RequestParam(value = "page") Optional<Integer> page,
                                     @RequestParam(value = "size") Optional<Integer> size,
                                     Model model){
+        model.addAttribute("activePage", "Products");
         model.addAttribute("products_array", productService.getMinMaxProducts(
                 minPrice, maxPrice,
                 PageRequest.of(page.orElse(1) -1, size.orElse(5))));
@@ -49,6 +50,12 @@ public class ProductController {
     public String newProduct(Product product){
         productService.insert(product);
         return "redirect:/product";
+    }
+
+    @GetMapping("/order")
+    public String orders(Model model){
+        model.addAttribute("activePage", "Orders");
+        return "orders";
     }
 }
 

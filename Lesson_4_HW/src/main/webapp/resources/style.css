@@ -16,13 +16,19 @@
     padding: 14px 16px;
     text-decoration: none;
 }
+.navbar a.hov {
+    background: royalblue;
+    color: black;
+}
 
 /* Change background on mouse-over */
 .navbar a:hover {
     background: #ddd;
     color: black;
 }
-
+body {
+    margin-top: 60px;
+}
 /* Main content */
 .main {
     margin-top: 30px; /* Add a top margin to avoid content overlay */

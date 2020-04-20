@@ -7,6 +7,9 @@
     <link rel="stylesheet" th:href="@{/resources/style.css}">
 </head>
 <body>
+
+<nav th:replace="fragments/navbar.html :: navbar (activePage=${activePage})"/>
+
 <h1>Products</h1>
 
 <a th:href="@{/product/form}">new product</a>
@@ -17,10 +20,12 @@
         <label for="maxPrice">Max Price</label><input type="number" id="maxPrice" name="maxPrice">
         <button type="submit">Apply</button>
     </p>
-</form>    <div style="display: flex; width: 30%; justify-content: space-around;" >
-        <div>
+</form>
+    <div style="display: flex; width: 30%; justify-content: space-around;" >
+        <div >
             <p>ID</p>
-            <p th:each="product : ${products_array}" th:text="${product.id}"></p>
+            <p th:if="${products_array.hasContent()}" th:each="product : ${products_array}" th:text="${product.id}"></p>
+            <p th:unless="${products_array.hasContent()}">no data</p>
         </div>
         <div>
             <p>Title</p>
@@ -32,7 +37,7 @@
         </div>
     </div>
 
-<div class="pagination">
+<div th:if="${products_array.hasContent()}" class="pagination">
     <a th:href="@{/product(page = ${1}, size = ${products_array.size})}">&laquo;</a>
 
     <a th:each="num : ${#numbers.sequence(1, products_array.totalPages)}"
