@@ -25,12 +25,6 @@ public class ProductController {
         this.productService = productService;
     }
 
-//    @GetMapping
-//    public String allProducts(Model model){
-//        model.addAttribute("products_array", productService.getAllProducts());
-//        return "products";
-//    }
-
     @GetMapping
     public String getMinMaxProducts(@RequestParam(value = "minPrice") Optional<BigDecimal> minPrice,
                                     @RequestParam(value = "maxPrice") Optional<BigDecimal> maxPrice,

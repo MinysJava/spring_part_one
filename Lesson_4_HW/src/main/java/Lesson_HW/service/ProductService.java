@@ -51,16 +51,6 @@ public class ProductService {
         return productRepository.findAll(pageable);
     }
 
-//    @Transactional(readOnly = true)
-//    public List<Product> getMinProducts(BigDecimal minPrice){
-//        return productRepository.findByCostAfter(minPrice);
-//    }
-//
-//    @Transactional(readOnly = true)
-//    public List<Product> getMaxProducts(BigDecimal maxPrice){
-//        return productRepository.findByCostBefore(maxPrice);
-//    }
-
     @Transactional(readOnly = true)
     public Page<Product> findAll(Pageable pageable){
         return productRepository.findAll(pageable);
