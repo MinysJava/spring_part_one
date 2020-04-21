@@ -35,8 +35,8 @@ public class ProductController {
         model.addAttribute("products_array", productService.getMinMaxProducts(
                 minPrice, maxPrice,
                 PageRequest.of(page.orElse(1) -1, size.orElse(5))));
-        model.addAttribute("minAge", minPrice.orElse(null));
-        model.addAttribute("maxAge", maxPrice.orElse(null));
+        model.addAttribute("minPrice", minPrice.orElse(null));
+        model.addAttribute("maxPrice", maxPrice.orElse(null));
         return "products";
     }
 
