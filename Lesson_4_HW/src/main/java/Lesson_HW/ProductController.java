@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -38,6 +35,12 @@ public class ProductController {
         model.addAttribute("minPrice", minPrice.orElse(null));
         model.addAttribute("maxPrice", maxPrice.orElse(null));
         return "products";
+    }
+
+    @GetMapping("/{id}")
+    public String editProduct(@PathVariable(value = "id") Long id, Model model){
+        model.addAttribute("product", productService.findById(id));
+        return "prod_form";
     }
 
     @GetMapping("/form")

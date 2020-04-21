@@ -24,7 +24,9 @@
     <div style="display: flex; width: 30%; justify-content: space-around;" >
         <div >
             <p>ID</p>
-            <p th:if="${products_array.hasContent()}" th:each="product : ${products_array}" th:text="${product.id}"></p>
+            <a th:each="product : ${products_array}" th:href="@{/product/{id}(id = ${product.id})}" th:if="${products_array.hasContent()}" >
+                <p th:text="${product.id}"></p>
+            </a>
             <p th:unless="${products_array.hasContent()}">no data</p>
         </div>
         <div>

@@ -7,6 +7,7 @@
 <body>
 
 <form th:action="@{/product/form}" th:object="${product}" method="post">
+    <input th:type="hidden" th:field="*{id}">
     <p>Title:</p>
     <input type="text" th:field="*{title}">
     <p>Cost:</p>

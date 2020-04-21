@@ -28,8 +28,8 @@ public class ProductService {
     }
 
     @Transactional
-    public void update(Product product){
-        productRepository.save(product);
+    public Optional<Product> findById (Long id){
+        return productRepository.findById(id);
     }
 
     @Transactional(readOnly = true)
