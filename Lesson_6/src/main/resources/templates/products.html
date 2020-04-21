@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/resources/style.css}">
+</head>
+<body>
+
+<nav th:replace="fragments/navbar.html :: navbar (activePage=${activePage})"/>
+
+<h1>Products</h1>
+
+<a th:href="@{/product/form}">new product</a>
+<br>
+<form method="get" th:action="@{/product}">
+    <p>
+        <label for="minPrice">Min Price</label><input type="number" id="minPrice" name="minPrice">
+        <label for="maxPrice">Max Price</label><input type="number" id="maxPrice" name="maxPrice">
+        <button type="submit">Apply</button>
+    </p>
+</form>
+    <div style="display: flex; width: 30%; justify-content: space-around;" >
+        <div >
+            <p>ID</p>
+            <a th:each="product : ${products_array}" th:href="@{/product/{id}(id = ${product.id})}" th:if="${products_array.hasContent()}" >
+                <p th:text="${product.id}"></p>
+            </a>
+            <p th:unless="${products_array.hasContent()}">no data</p>
+        </div>
+        <div>
+            <p>Title</p>
+            <p th:each="product : ${products_array}" th:text="${product.title}"></p>
+        </div>
+        <div>
+            <p>Cost</p>
+            <p th:each="product : ${products_array}" th:text="${product.cost}"></p>
+        </div>
+    </div>
+
+<div th:if="${products_array.hasContent()}" class="pagination">
+    <a th:href="@{/product(page = ${1}, size = ${products_array.size})}">&laquo;</a>
+
+    <a th:each="num : ${#numbers.sequence(1, products_array.totalPages)}"
+       th:classappend="${num == products_array.number + 1} ? 'active'"
+       th:href="@{/product(page = ${num}, size = ${products_array.size})}">[[${num}]]</a>
+
+    <a th:href="@{/product(page = ${products_array.totalPages}, size = ${products_array.size})}">&raquo;</a>
+</div>
+
+
+</body>
+</html>
