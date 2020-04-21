@@ -9,6 +9,7 @@
         <module name="Lesson_2_Servlet" />
         <module name="Lesson_3_hibernate" />
         <module name="Lesson_4_HW" />
+        <module name="Lesson_6" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -16,6 +17,12 @@
       <module name="Lesson_2_Spring_MVC" target="1.5" />
       <module name="Lesson_4_Spring_mvc" target="1.8" />
       <module name="network-chat" target="8" />
+      <module name="spring" target="1.5" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Lesson_6" options="-parameters" />
+    </option>
   </component>
 </project>

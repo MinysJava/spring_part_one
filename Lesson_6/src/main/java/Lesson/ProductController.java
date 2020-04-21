@@ -1,7 +1,8 @@
-package Lesson_HW;
+package Lesson;
 
-import Lesson_HW.product.Product;
-import Lesson_HW.service.ProductService;
+
+import Lesson.product.Product;
+import Lesson.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;

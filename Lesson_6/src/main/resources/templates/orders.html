@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+    <link rel="stylesheet" th:href="@{/resources/style.css}">
+</head>
+<body>
+<nav th:replace="fragments/navbar.html :: navbar (activePage=${activePage})"/>
+
+
+<h1>Заказы</h1>
+
+<a th:href="@{/product}">Назад</a>
+
+</body>
+</html>

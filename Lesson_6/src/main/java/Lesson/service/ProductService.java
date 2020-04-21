@@ -1,7 +1,7 @@
-package Lesson_HW.service;
+package Lesson.service;
 
-import Lesson_HW.product.Product;
-import Lesson_HW.product.ProductRepository;
+import Lesson.product.Product;
+import Lesson.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
