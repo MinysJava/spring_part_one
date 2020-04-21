@@ -52,9 +52,4 @@ public class AppProductConfig {
         tm.setEntityManagerFactory(entityManagerFactory);
         return tm;
     }
-
-
-
-
-
 }

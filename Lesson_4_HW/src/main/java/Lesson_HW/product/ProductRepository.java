@@ -1,17 +1,21 @@
 package Lesson_HW.product;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    List<Product> findByCostBetween (BigDecimal minPrice, BigDecimal maxPrice);
+    Page<Product> findByCostBetween (BigDecimal minPrice, BigDecimal maxPrice, Pageable pageable);
 
-    List<Product> findByCostAfter (BigDecimal minPrice);
+    Page<Product> findByCostGreaterThanEqual (BigDecimal minPrice, Pageable pageable);
 
-    List<Product> findByCostBefore (BigDecimal maxPrice);
+    Page<Product> findByCostLessThanEqual (BigDecimal maxPrice, Pageable pageable);
+
+
+
 }

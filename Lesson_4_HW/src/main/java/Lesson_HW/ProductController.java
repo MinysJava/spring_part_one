@@ -3,6 +3,7 @@ package Lesson_HW;
 import Lesson_HW.product.Product;
 import Lesson_HW.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/product")
@@ -24,28 +26,18 @@ public class ProductController {
     }
 
     @GetMapping
-    public String allProducts(Model model){
-        model.addAttribute("products_array", productService.getAllProducts());
+    public String getMinMaxProducts(@RequestParam(value = "minPrice") Optional<BigDecimal> minPrice,
+                                    @RequestParam(value = "maxPrice") Optional<BigDecimal> maxPrice,
+                                    @RequestParam(value = "page") Optional<Integer> page,
+                                    @RequestParam(value = "size") Optional<Integer> size,
+                                    Model model){
+        model.addAttribute("activePage", "Products");
+        model.addAttribute("products_array", productService.getMinMaxProducts(
+                minPrice, maxPrice,
+                PageRequest.of(page.orElse(1) -1, size.orElse(5))));
+        model.addAttribute("minPrice", minPrice.orElse(null));
+        model.addAttribute("maxPrice", maxPrice.orElse(null));
         return "products";
-    }
-
-    @GetMapping(params = {"minPrice", "maxPrice"})
-    public String getMinMaxProducts(@RequestParam("minPrice") BigDecimal minPrice,
-                              @RequestParam("maxPrice") BigDecimal maxPrice,
-                              Model model){
-        if(minPrice != null & maxPrice != null){
-            model.addAttribute("products_array", productService.getMinMaxProducts(minPrice, maxPrice));
-            return "products";
-        } else if (minPrice != null){
-            model.addAttribute("products_array", productService.getMinProducts(minPrice));
-        return "products";
-        } else if ( maxPrice != null){
-            model.addAttribute("products_array", productService.getMaxProducts(maxPrice));
-            return "products";
-        } else {
-            model.addAttribute("products_array", productService.getAllProducts());
-            return "products";
-        }
     }
 
     @GetMapping("/form")
@@ -58,6 +50,12 @@ public class ProductController {
     public String newProduct(Product product){
         productService.insert(product);
         return "redirect:/product";
+    }
+
+    @GetMapping("/order")
+    public String orders(Model model){
+        model.addAttribute("activePage", "Orders");
+        return "orders";
     }
 }
 
