@@ -1,0 +1,17 @@
+GET http://localhost:8080/app/api/v1/product/all
+
+###
+
+GET http://localhost:8080/app/api/v1/product/1/id
+
+###
+
+POST http://localhost:8080/app/api/v1/product
+Content-Type: application/json
+
+{
+  "title": "item - 2",
+  "cost": 20.00
+}
+
+###
