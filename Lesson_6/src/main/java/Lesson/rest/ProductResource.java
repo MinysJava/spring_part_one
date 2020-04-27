@@ -49,8 +49,11 @@ public class ProductResource {
     }
 
     @ExceptionHandler
-    public ResponseEntity<String> notFoundExceptionHandler(NotFoundException exception){
-        return new ResponseEntity<>("NOT_FOUND", HttpStatus.NOT_FOUND);
+    public ResponseEntity<ProductException> notFoundExceptionHandler(NotFoundException exception){
+        ProductException productException = new ProductException();
+        productException.setStatus(HttpStatus.NOT_FOUND.value());
+        productException.setMessage("Продукт не найден");
+        return new ResponseEntity<>(productException, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler
