@@ -52,7 +52,7 @@ public class ProductController {
 
     @PostMapping("/form")
     public String newProduct(Product product){
-        productService.insert(product);
+        productService.save(product);
         return "redirect:/product";
     }
 

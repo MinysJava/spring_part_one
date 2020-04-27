@@ -23,7 +23,7 @@ public class ProductService {
     }
 
     @Transactional
-    public void insert(Product product){
+    public void save(Product product){
         productRepository.save(product);
     }
 
@@ -54,5 +54,15 @@ public class ProductService {
     @Transactional(readOnly = true)
     public Page<Product> findAll(Pageable pageable){
         return productRepository.findAll(pageable);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Product> findAll(){
+        return productRepository.findAll();
+    }
+
+    @Transactional
+    public void deleteById(Long id){
+        productRepository.deleteById(id);
     }
 }
