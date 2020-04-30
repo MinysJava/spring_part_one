@@ -1,26 +1,36 @@
 package Lesson.security;
 
+import Lesson.product.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfiguration {
 
+    @Bean
+    public UserDetailsService userDetailsService(UserRepository userRepository){
+        return new UserAuthService(userRepository);
+    }
+
     @Autowired
-    public void authConfigure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user")
-                .password("{noop}pass")
-                .roles("USER")
-                .and()
-                .withUser("admin")
-                .password("{noop}pass")
-                .roles("ADMIN");
+    public void authConfigure(AuthenticationManagerBuilder auth,
+                              UserDetailsService userDetailsService,
+                              PasswordEncoder passwordEncoder)  {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(passwordEncoder);
+        auth.authenticationProvider(provider);
     }
 
     @Configuration
@@ -46,8 +56,10 @@ public class SecurityConfiguration {
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .authorizeRequests()
-                    .anyRequest()
-                    .authenticated()
+                    .antMatchers("/resources/*").permitAll()
+                    .antMatchers("/product/**").permitAll()
+                    .antMatchers("/user/**").hasRole("ADMIN")
+                    .antMatchers("/**").authenticated()
                     .and()
                     .formLogin();
         }
