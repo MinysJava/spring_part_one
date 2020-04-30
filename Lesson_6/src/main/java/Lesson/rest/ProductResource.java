@@ -5,6 +5,8 @@ import Lesson.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +32,7 @@ public class ProductResource {
         return productService.findById(id).orElseThrow(NotFoundException::new);
     }
 
+    @Secured({"Admin"})
     @PostMapping
     public void createProduct(@RequestBody Product product){
         if (product.getId() != null){
@@ -38,11 +41,13 @@ public class ProductResource {
         productService.save(product);
     }
 
+    @Secured({"Admin"})
     @PutMapping
     public void updateProduct(@RequestBody Product product){
         productService.save(product);
     }
 
+    @Secured({"Admin"})
     @DeleteMapping(path = "/{id}/id", produces = "application/json")
     public void deleteProduct(@PathVariable("id") Long id){
         productService.deleteById(id);

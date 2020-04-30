@@ -1,13 +1,12 @@
 package Lesson.product;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "roles")
-public class Role implements Serializable {
+public class Role{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
