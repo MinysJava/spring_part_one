@@ -68,7 +68,7 @@ public class SecurityConfiguration {
                     .and()
                     .formLogin()
                     .loginPage("/user/login_m")
-                    .loginProcessingUrl("/login")
+                    .loginProcessingUrl("/app/product")
                     .defaultSuccessUrl("/product")
                     .permitAll()
                     .and()
