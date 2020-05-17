@@ -48,6 +48,14 @@ public class UserController {
         return "user_form";
     }
 
+    @GetMapping("/login_m")
+    public String showMyLoginPage() {
+        return "modern-login";
+    }
+
+//    @PostMapping("/lm")
+//    public
+
     @PostMapping("/form")
     public String newUser(@Valid UserRepr user, BindingResult result) {
         if (result.hasErrors()) {

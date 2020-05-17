@@ -66,7 +66,15 @@ public class SecurityConfiguration {
                     .antMatchers("/user/**").hasRole("ADMIN")
                     .antMatchers("/**").authenticated()
                     .and()
-                    .formLogin();
+                    .formLogin()
+                    .loginPage("/user/login_m")
+                    .loginProcessingUrl("/login")
+                    .defaultSuccessUrl("/product")
+                    .permitAll()
+                    .and()
+                    .logout()
+                    .permitAll()
+                    .logoutSuccessUrl("/product");
         }
     }
 }
