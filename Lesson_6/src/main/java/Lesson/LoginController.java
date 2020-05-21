@@ -1,4 +1,4 @@
-package Lesson.service;
+package Lesson;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
